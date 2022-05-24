@@ -1,9 +1,12 @@
 const path = require('path')
 const { join } = path
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+
+const env = require('dotenv').config({path: __dirname + `/.env.${process.env.NODE_ENV}`})
 const settings = require('./settings.js')
 
 module.exports = {
@@ -15,6 +18,9 @@ module.exports = {
     assetModuleFilename: 'assets/[name][ext]'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(env.parsed)
+    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [{
@@ -74,9 +80,9 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         type: 'asset',
         parser: {
-           dataUrlCondition: {
-               maxSize: 6 * 1024,
-           }
+          dataUrlCondition: {
+              maxSize: 6 * 1024,
+          }
         }
       }
     ]
