@@ -8,6 +8,8 @@ const { VueLoaderPlugin } = require('vue-loader')
 const env = require('dotenv').config({path: __dirname + `/.env.${process.env.NODE_ENV}`})
 const settings = require('./settings.js')
 
+const mockServer = require('./mock-server.js')
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -89,6 +91,23 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 9527
+    host: '0.0.0.0',
+    port: 9527,
+    setupMiddlewares: (middlewares, devServer) => {
+      if (env.parsed.NODE_ENV !== 'production') {
+        mockServer(devServer.app)
+      }
+      return middlewares
+    },
+    proxy: {
+      '/mock': {
+        target: `http://localhost:9527`,
+        changeOrigin: true,
+        ws: true,
+        secure: false,
+        logLevel: 'debug',
+        rewrite: path => path.replace(/\/mock/, '')
+      }
+    }
   }
 }
