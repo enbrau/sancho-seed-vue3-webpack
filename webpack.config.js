@@ -1,5 +1,4 @@
 const path = require('path')
-const { join } = path
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -37,7 +36,7 @@ module.exports = {
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
-      '@': join('../src')
+      '@': path.join(__dirname, 'src')
     }
   },
   module: {
