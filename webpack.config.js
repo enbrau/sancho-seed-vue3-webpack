@@ -18,7 +18,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify(env.parsed)
+      'process.env': JSON.stringify(env.parsed),
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
