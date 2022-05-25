@@ -91,22 +91,22 @@ module.exports = {
     ]
   },
   devServer: {
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     port: 9527,
     setupMiddlewares: (middlewares, devServer) => {
-      if (env.parsed.NODE_ENV !== 'production') {
+      if (env.parsed.NODE_ENV === 'development') {
         mockServer(devServer.app)
       }
       return middlewares
     },
     proxy: {
-      '/mock': {
-        target: `http://localhost:9527`,
+      [process.env.CONTEXT_PATH]: {
+        target: process.env.HOST,
         changeOrigin: true,
         ws: true,
         secure: false,
         logLevel: 'debug',
-        rewrite: path => path.replace(/\/mock/, '')
+        pathRewrite: { '/mock': '' }
       }
     }
   }

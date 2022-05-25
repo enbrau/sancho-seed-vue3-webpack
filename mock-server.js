@@ -19,15 +19,20 @@ function registerRoutes(app) {
 
   for (mock of mocks) {
     app[mock.method](mock.url, (req, res) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
-      res.header("Access-Control-Allow-Headers", "X-Requested-With");
-      res.header('Access-Control-Allow-Headers', 'Content-Type');
-      res.header("X-Powered-By",' 3.2.1')
-      res.header("Content-Type", "application/json;charset=utf-8")
+      // console.log('--->')
+      // res.header("Access-Control-Allow-Origin", "*");
+      // res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+      // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+      // res.header('Access-Control-Allow-Headers', 'Content-Type');
+      // res.header("X-Powered-By",' 3.2.1')
+      // res.header("Content-Type", "application/json;charset=utf-8")
 
-      const response = mock.response()
-      res.json(response)
+      try {
+        const response = mock.response()
+        res.json(response)
+      } catch(e) {
+        console.error(e)
+      }
     })
 
     mockLastIndex    = app._router.stack.length

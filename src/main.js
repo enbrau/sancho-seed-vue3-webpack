@@ -4,9 +4,13 @@ import i18n from '@/i18n'
 
 import App from './App.vue'
 
-createApp(App)
+const app = createApp(App)
   .use(store)
   .use(i18n)
-  .mount('#app')
+
+import { preloadHook } from './hooks'
+preloadHook.promise(app).then(() => {
+  app.mount('#app')
+})
 
 import '@/utils/handle-window-resize.js'
