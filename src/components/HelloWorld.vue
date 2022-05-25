@@ -14,11 +14,10 @@ function changeLanguage(locale) {
 }
 
 const apiMsg = ref('loading...')
-async function fetchApiMsg() {
+setTimeout(async () => {
   const data = await demoApi()
   apiMsg.value = data.msg
-}
-fetchApiMsg()
+}, 2000)
 </script>
 
 <template>
