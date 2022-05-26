@@ -43,6 +43,10 @@ setTimeout(async () => {
   </p>
 
   <p>
+    <router-view />
+  </p>
+
+  <p>
     I18n: <button v-for="(lang, $key) in langs" :key="lang" @click="changeLanguage($key)">{{lang}}</button>
   </p>
 

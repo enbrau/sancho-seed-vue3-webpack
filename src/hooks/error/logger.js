@@ -1,3 +1,3 @@
 export default function(error) {
-  console.warn(`[Sancho] API Error: ${error.message}\n`, error)
+  console.warn(`[Sancho] Error occured: ${error.message}\n`, error)
 }

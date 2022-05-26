@@ -41,3 +41,19 @@ errorHookFiles.keys().forEach((key) => {
   errorHooks[moduleName] = errorHookFiles(key).default
 })
 export const errorHook = createHook(new SyncHook(['error']), 'error',  errorHooks, 'tap')
+
+const beforeRouteHooks = {}
+const beforeRouteHookFiles = require.context('./beforeRoute/', false, /\.js$/)
+beforeRouteHookFiles.keys().forEach((key) => {
+  const moduleName = key.replace(/(\.\/|\.js)/g, '')
+  beforeRouteHooks[moduleName] = beforeRouteHookFiles(key).default
+})
+export const beforeRouteHook = createHook(new AsyncParallelHook(['to', 'from', 'next']), 'beforeRoute',  beforeRouteHooks, 'tapPromise')
+
+const afterRouteHooks = {}
+const afterRouteHookFiles = require.context('./afterRoute/', false, /\.js$/)
+afterRouteHookFiles.keys().forEach((key) => {
+  const moduleName = key.replace(/(\.\/|\.js)/g, '')
+  afterRouteHooks[moduleName] = afterRouteHookFiles(key).default
+})
+export const afterRouteHook = createHook(new AsyncParallelHook(['route']), 'afterRoute',  afterRouteHooks, 'tapPromise')
