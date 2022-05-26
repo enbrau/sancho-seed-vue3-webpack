@@ -1,3 +1,3 @@
 export default {
-  name: '英文'
+  name: 'English(US)'
 }

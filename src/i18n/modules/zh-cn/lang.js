@@ -1,3 +1,3 @@
 export default {
-  name: '中文（简体）'
+  name: '中文(简体)'
 }
