@@ -42,6 +42,33 @@ npm run dev:online
 npm build
 ```
 
+## Project Structure
+
+```
+.
+├── mock                 # (Throw-In Available) Mock API
+├── public               # Static assets (copy only)
+├── src                  # 
+    ├── api              # (Throw-In Available) Axios API functions
+    ├── assets           # Static assets
+    ├── components       # Common components
+    ├── consts           # Constants
+    ├── hooks            # (Throw-In Available) Hooks
+    ├── i18n             # (Throw-In Available) Translations
+    ├── router           # (Throw-In Available) Routes
+    ├── store            # (Throw-In Available) State management
+    ├── utils            # Common functions
+    ├── views            # View components
+    ├── App.vue          # Entrance component
+    └── main.js          # Entrance file
+├── .env.development     # Environment parameters for development with mock server
+├── .env.online          # Environment parameters for development with proxy server
+├── .env.production      # Environment parameters for production
+├── settings.js          # Project config file
+├── webpack.config.js    # Webpack config file
+└── ...
+```
+
 ## Links
 
-[Vite](https://vitejs.dev/)  [Vuex](https://next.vuex.vuejs.org/)
+[Webpack](https://webpack.js.org/guides/)  [Vue3](https://v3.vuejs.org/)  [Vuex](https://next.vuex.vuejs.org/)  [Vue Router](https://router.vuejs.org/)

@@ -42,6 +42,33 @@ npm run dev:online
 npm build
 ```
 
+## 项目结构
+
+```
+.
+├── mock                 # (丢入即可) 测试桩
+├── public               # 静态资源（仅拷贝）
+├── src                  # 
+    ├── api              # (丢入即可) Axios API 封装函数
+    ├── assets           # 静态资源
+    ├── components       # 公共组件
+    ├── consts           # 常量
+    ├── hooks            # (丢入即可) 钩子
+    ├── i18n             # (丢入即可) 翻译
+    ├── router           # (丢入即可) 路由
+    ├── store            # (丢入即可) 状态管理
+    ├── utils            # 公共函数
+    ├── views            # 视图组件
+    ├── App.vue          # 入口组件
+    └── main.js          # 入口文件
+├── .env.development     # 环境变量：开发环境（离线开发）
+├── .env.online          # 环境变量：开发环境（联机开发）
+├── .env.production      # 环境变量：生产环境
+├── settings.js          # 项目配置文件
+├── webpack.config.js    # Webpack 配置文件
+└── ...
+```
+
 ## 链接
 
-[Vite](https://vitejs.dev/)  [Vuex](https://next.vuex.vuejs.org/)  [Vue3]()
+[Webpack](https://webpack.js.org/guides/)  [Vue3](https://v3.vuejs.org/)  [Vuex](https://next.vuex.vuejs.org/)  [Vue Router](https://router.vuejs.org/)
