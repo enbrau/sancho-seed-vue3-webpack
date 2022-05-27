@@ -51,6 +51,10 @@ setTimeout(async () => {
   </p>
 
   <p>
+    SvgIcons: <svg-icon icon-class="home" /> <svg-icon icon-class="team" /> <svg-icon icon-class="like" />
+  </p>
+
+  <p>
     {{apiMsg}}
   </p>
   

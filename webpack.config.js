@@ -59,6 +59,8 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
+          'style-loader',
+          'css-loader',
           'sass-loader'
         ]
       },
@@ -77,7 +79,7 @@ module.exports = {
               corejs: 3
             }]]
           }
-        }
+        },
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -86,6 +88,15 @@ module.exports = {
           dataUrlCondition: {
               maxSize: 6 * 1024,
           }
+        },
+        exclude: path.resolve(__dirname, './src/icons')
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: path.resolve(__dirname, './src/icons'),
+        options: {
+          symbolId: 'icon-[name]'
         }
       }
     ]
