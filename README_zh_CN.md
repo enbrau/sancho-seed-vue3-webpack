@@ -55,6 +55,7 @@ npm build
     ├── consts           # 常量
     ├── hooks            # (丢入即可) 钩子
     ├── i18n             # (丢入即可) 翻译
+    ├── icons            # (丢入即可) 图标
     ├── router           # (丢入即可) 路由
     ├── store            # (丢入即可) 状态管理
     ├── utils            # 公共函数

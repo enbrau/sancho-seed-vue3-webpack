@@ -55,6 +55,7 @@ npm build
     ├── consts           # Constants
     ├── hooks            # (Throw-In Available) Hooks
     ├── i18n             # (Throw-In Available) Translations
+    ├── icons            # (Throw-In Available) Icons
     ├── router           # (Throw-In Available) Routes
     ├── store            # (Throw-In Available) State management
     ├── utils            # Common functions
