@@ -3,7 +3,6 @@ const chalk = require('chalk')
 const bodyParser = require('body-parser')
 const requireContext = require('require-context')
 const path = require('path')
-const { mock } = require('mockjs')
 
 const mockDir = path.resolve(__dirname, './mock')
 
