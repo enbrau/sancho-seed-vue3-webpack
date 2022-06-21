@@ -6,6 +6,10 @@ export default [
       {
         path: 'demo',
         component: () => import('@/views/demo')
+      },
+      {
+        path: 'subapp1',
+        component: () => import('@/views/demo')
       }
     ]
   }

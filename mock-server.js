@@ -15,21 +15,19 @@ function registerRoutes(app) {
     }
   })
 
-  console.log(mocks[1].url)
-
   let mockLastIndex = 0, mockRoutesLength = 0, mockStartIndex = 0
 
   for (let i = 0; i < mocks.length; i++) {
     let api = mocks[i]
     console.log('Mock added: [' + api.method + ']' + api.url)
     app[api.method](api.url, (req, res) => {
-      console.log('--->')
       res.header("Access-Control-Allow-Origin", "*");
       res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
       res.header("Access-Control-Allow-Headers", "X-Requested-With");
       res.header('Access-Control-Allow-Headers', 'Content-Type');
       res.header("X-Powered-By",' 3.2.1')
       res.header("Content-Type", "application/json;charset=utf-8")
+      res.header('Connection', 'keep-alive')
 
       try {
         const response = api.response()

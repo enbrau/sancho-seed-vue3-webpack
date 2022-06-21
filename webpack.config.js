@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const packageName = require('./package.json').name
 
 const env = require('dotenv').config({path: __dirname + `/.env.${process.env.NODE_ENV}`})
 const settings = require('./settings.js')
@@ -13,10 +14,14 @@ const mockServer = require('./mock-server.js')
 module.exports = {
   entry: './src/main.js',
   output: {
+    publicPath: '/subapp1/',
     path: path.resolve(__dirname, './dist'),
-    filename: 'assets/[name].[contenthash].js',
-    chunkFilename: 'assets/bundle-[name].[contenthash].js',
-    assetModuleFilename: 'assets/[name][ext]'
+    library: `{packageName}-[name]`,
+    libraryTarget: 'umd',
+    chunkLoadingGlobal: `webpackJsonp_${packageName}`,
+    // filename: 'assets/[name].[contenthash].js',
+    // chunkFilename: 'assets/bundle-[name].[contenthash].js',
+    // assetModuleFilename: 'assets/[name][ext]'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -103,7 +108,10 @@ module.exports = {
   },
   devServer: {
     host: '127.0.0.1',
-    port: 9527,
+    port: 10001,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     setupMiddlewares: (middlewares, devServer) => {
       if (env.parsed.NODE_ENV === 'development') {
         mockServer(devServer.app)

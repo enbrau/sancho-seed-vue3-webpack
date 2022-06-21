@@ -15,6 +15,8 @@ const routes = [
 ]
 
 const router = createRouter({
+  base: window.__POWERED_BY_QIANKUN__ ? '/finance/' : '/',
+  mode: 'history',
   history: createWebHashHistory(),
   scrollBehavior: () => ({ left: 0 }),
   routes
