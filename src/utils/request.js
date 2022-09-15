@@ -1,6 +1,7 @@
 import axios from 'axios'
 import settings from '@/../settings.js'
 import { requestHook, responseHook, errorHook } from '@/hooks'
+import { ElMessage } from 'element-plus'
 
 const service = axios.create({
   baseURL: getBaseUrl(),
@@ -82,6 +83,9 @@ service.interceptors.response.use(
           })  
         } else {
           const message = data.msg || 'Request error!'
+          if (!response.config.ignoreError) {
+            ElMessage.error(message)
+          }
           return Promise.reject(new Error(message))
         }
       }
